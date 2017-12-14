@@ -15,7 +15,7 @@ setuptools.setup(
     description="JUnit XML Formatter for flake8",
     long_description=readme,
     author="Asato Wakisaka",
-    author_email="asato.wakisaka@github.com",
+    author_email="asato.wakisaka@gmail.com",
     url="https://github.com/astj/flake8-formatting-junit-xml",
     py_modules=['flake8_formatting_junit_xml'],
     install_requires=requires,
