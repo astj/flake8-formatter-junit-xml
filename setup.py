@@ -9,19 +9,19 @@ requires = [
 readme = open('README.rst').read()
 
 setuptools.setup(
-    name="flake8_formatting_junit_xml",
+    name="flake8_formatter_junit_xml",
     license="MIT",
     version="0.0.1",
     description="JUnit XML Formatter for flake8",
     long_description=readme,
     author="Asato Wakisaka",
     author_email="asato.wakisaka@gmail.com",
-    url="https://github.com/astj/flake8-formatting-junit-xml",
-    py_modules=['flake8_formatting_junit_xml'],
+    url="https://github.com/astj/flake8-formatter-junit-xml",
+    py_modules=['flake8_formatter_junit_xml'],
     install_requires=requires,
     entry_points={
         'flake8.report': [
-            'junit-xml = flake8_formatting_junit_xml:JUnitXmlFormatter',
+            'junit-xml = flake8_formatter_junit_xml:JUnitXmlFormatter',
         ],
     },
     classifiers=[
