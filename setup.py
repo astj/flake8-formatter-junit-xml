@@ -3,6 +3,7 @@ import setuptools
 
 requires = [
     "flake8 > 3.0.0",
+    "junit-xml >= 1.8"
 ]
 
 readme = open('README.rst').read()
