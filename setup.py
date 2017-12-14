@@ -12,7 +12,7 @@ setuptools.setup(
     name="flake8_formatting_junit",
     license="MIT",
     version="0.0.1",
-    description="TBD",
+    description="JUnit XML Formatter for flake8",
     long_description=readme,
     author="Asato Wakisaka",
     author_email="asato.wakisaka@github.com",
