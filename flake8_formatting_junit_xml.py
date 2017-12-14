@@ -2,8 +2,8 @@ from flake8.formatting import base
 from junit_xml import TestSuite, TestCase
 
 
-class JUnitFormatter(base.BaseFormatter):
-    """JUnit formatter for Flake8."""
+class JUnitXmlFormatter(base.BaseFormatter):
+    """JUnit XML formatter for Flake8."""
 
     test_suites = dict()
 

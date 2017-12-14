@@ -1,5 +1,5 @@
 ========
-flake8-formatting-junit
+flake8-formatting-junit-xml
 ========
 
 JUnit XML Formatter for flake8.
