@@ -11,7 +11,8 @@ class JUnitXmlFormatter(base.BaseFormatter):
         name = '{0}.{1}'.format("flake8", filename.replace('.', '_'))
         self.test_suites[filename] = TestSuite(name, file=filename)
 
-    def format(self, error):
+    # Do not write each error
+    def handle(self, error):
         name = '{0}, {1}'.format(error.code, error.text)
         test_case = TestCase(name, file=error.filename, line=error.line_number)
         message = '%(path)s:%(row)d:%(col)d: %(code)s %(text)s' % {
@@ -23,10 +24,6 @@ class JUnitXmlFormatter(base.BaseFormatter):
         }
         test_case.add_failure_info(message)
         self.test_suites[error.filename].test_cases.append(test_case)
-
-    # Do not write each error
-    def write(self, line, source):
-        pass
 
     # writes results to file after all files are processed
     def stop(self):
