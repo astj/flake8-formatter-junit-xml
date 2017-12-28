@@ -35,7 +35,7 @@ class TestJunitXmlFormatter(unittest.TestCase):
         (fd, tempfilename) = tempfile.mkstemp()
 
         with open(os.path.dirname(os.path.abspath(__file__)) + '/expected.xml', 'r') as f:
-            xml_content = f.read(None)
+            xml_content = f.read()
 
         formatter = create_formatter(output_file=tempfilename)
         formatter.start()
@@ -45,5 +45,5 @@ class TestJunitXmlFormatter(unittest.TestCase):
         formatter.stop()
 
         with os.fdopen(fd) as f:
-            content = f.read(None)
+            content = f.read()
             self.assertEqual(xml_content, content)
