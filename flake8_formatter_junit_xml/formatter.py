@@ -28,4 +28,4 @@ class JUnitXmlFormatter(base.BaseFormatter):
     # writes results to file after all files are processed
     def stop(self):
         self._write(TestSuite.to_xml_string(iter(self.test_suites.values())))
-        super().stop()
+        super(JUnitXmlFormatter, self).stop()
