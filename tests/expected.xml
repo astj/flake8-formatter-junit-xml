@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="1" tests="1" time="0.0">
+	<testsuite disabled="0" errors="0" failures="1" name="flake8.some/filename_py" skipped="0" tests="1" time="0">
+		<testcase file="some/filename.py" line="2" name="A000, wrong wrong wrong">
+			<failure message="some/filename.py:2:1: A000 wrong wrong wrong" type="failure"/>
+		</testcase>
+	</testsuite>
+</testsuites>
+
