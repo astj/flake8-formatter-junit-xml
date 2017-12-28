@@ -1,4 +1,4 @@
-from .formatter import JUnitXmlFormatter
+from .formatter import JUnitXmlFormatter  # NOQA
 
 __all__ = (
     'JunitXmlFormatter'

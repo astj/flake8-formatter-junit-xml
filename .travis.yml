@@ -8,3 +8,4 @@ install:
   - pip install .
 script:
   - python -m unittest
+  - flake8 ./tests/ ./flake8_formatter_junit_xml/
