@@ -39,11 +39,16 @@ class TestJunitXmlFormatter(unittest.TestCase):
 
         formatter = create_formatter(output_file=tempfilename)
         formatter.start()
+        # a file with error
         formatter.beginning(filename)
         formatter.handle(error)
         formatter.finished(filename)
+        # another file without error
+        formatter.beginning("some/noerror.py")
+        formatter.finished("some/noerror.py")
         formatter.stop()
 
         with os.fdopen(fd) as f:
             content = f.read()
+            # print(content)
             self.assertEqual(xml_content, content)
