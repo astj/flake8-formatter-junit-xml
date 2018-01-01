@@ -5,7 +5,8 @@ from junit_xml import TestSuite, TestCase
 class JUnitXmlFormatter(base.BaseFormatter):
     """JUnit XML formatter for Flake8."""
 
-    test_suites = dict()
+    def after_init(self):
+        self.test_suites = {}
 
     def beginning(self, filename):
         name = '{0}.{1}'.format("flake8", filename.replace('.', '_'))
