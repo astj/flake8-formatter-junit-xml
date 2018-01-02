@@ -26,7 +26,17 @@ class JUnitXmlFormatter(base.BaseFormatter):
         test_case.add_failure_info(message)
         self.test_suites[error.filename].test_cases.append(test_case)
 
+    # Add a dummy test if no error found
+    def finished(self, filename):
+        if len(self.test_suites[filename].test_cases) == 0:
+            dummy_case = TestCase("Check passed", file=filename)
+            self.test_suites[filename].test_cases.append(dummy_case)
+
+    # sort to generate a stable output
+    def sorted_suites(self):
+        return map(lambda x: x[1], sorted(self.test_suites.items()))
+
     # writes results to file after all files are processed
     def stop(self):
-        self._write(TestSuite.to_xml_string(iter(self.test_suites.values())))
+        self._write(TestSuite.to_xml_string(iter(self.sorted_suites())))
         super(JUnitXmlFormatter, self).stop()
