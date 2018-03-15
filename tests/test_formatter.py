@@ -34,6 +34,10 @@ class TestJunitXmlFormatter(unittest.TestCase):
     def test_scenario(self):
         (fd, tempfilename) = tempfile.mkstemp()
 
+        # If formatter opens this file with `a`, tests should fail due to pre-written content.
+        with os.fdopen(fd, 'w') as f:
+            f.write("some pre-existing texts!!\n")
+
         with open(os.path.dirname(os.path.abspath(__file__)) + '/expected.xml', 'r') as f:
             xml_content = f.read()
 
@@ -48,7 +52,7 @@ class TestJunitXmlFormatter(unittest.TestCase):
         formatter.finished("some/noerror.py")
         formatter.stop()
 
-        with os.fdopen(fd) as f:
+        with open(tempfilename) as f:
             content = f.read()
             # print(content)
             self.assertEqual(xml_content, content)
