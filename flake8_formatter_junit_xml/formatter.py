@@ -12,6 +12,11 @@ class JUnitXmlFormatter(base.BaseFormatter):
         name = '{0}.{1}'.format("flake8", filename.replace('.', '_'))
         self.test_suites[filename] = TestSuite(name, file=filename)
 
+    # This formatter overwrites the target file, in contrast to flake8 base formatter which appends to the file.
+    def start(self):
+        if self.filename:
+            self.output_fd = open(self.filename, 'w')
+
     # Do not write each error
     def handle(self, error):
         name = '{0}, {1}'.format(error.code, error.text)
