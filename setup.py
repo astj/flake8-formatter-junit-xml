@@ -11,7 +11,7 @@ readme = open('README.rst').read()
 setuptools.setup(
     name="flake8_formatter_junit_xml",
     license="MIT",
-    version="0.0.4",
+    version="0.0.5",
     description="JUnit XML Formatter for flake8",
     long_description=readme,
     author="Asato Wakisaka",
