@@ -56,3 +56,5 @@ class TestJunitXmlFormatter(unittest.TestCase):
             content = f.read()
             # print(content)
             self.assertEqual(xml_content, content)
+
+        os.remove(tempfilename)
