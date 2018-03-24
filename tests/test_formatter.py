@@ -13,6 +13,7 @@ error = style_guide.Violation('A000', filename, 2, 1, 'wrong wrong wrong', 'impo
 def create_formatter(**kwargs):
     kwargs.setdefault('output_file', None)
     kwargs.setdefault('tee', False)
+    kwargs.setdefault('show_source', False)
     return JUnitXmlFormatter(optparse.Values(kwargs))
 
 
@@ -30,6 +31,13 @@ class TestJunitXmlFormatter(unittest.TestCase):
         f.handle(error)
         self.assertIsNotNone(f.test_suites[filename].test_cases)
         self.assertIsInstance(f.test_suites[filename].test_cases[0], TestCase)
+        self.assertIsNone(f.test_suites[filename].test_cases[0].failure_output)
+
+    def test_show_source(self):
+        f = create_formatter(show_source=True)
+        f.beginning(filename)
+        f.handle(error)
+        self.assertIn('import os', f.test_suites[filename].test_cases[0].failure_output)
 
     def test_scenario(self):
         (fd, tempfilename) = tempfile.mkstemp()
