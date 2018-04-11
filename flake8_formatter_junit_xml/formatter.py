@@ -21,15 +21,17 @@ class JUnitXmlFormatter(base.BaseFormatter):
     def handle(self, error):
         name = '{0}, {1}'.format(error.code, error.text)
         test_case = TestCase(name, file=error.filename, line=error.line_number)
-        message = '%(path)s:%(row)d:%(col)d: %(code)s %(text)s' % {
+        test_case.add_failure_info(message=self.format(error), output=self.show_source(error))
+        self.test_suites[error.filename].test_cases.append(test_case)
+
+    def format(self, error):
+        return '%(path)s:%(row)d:%(col)d: %(code)s %(text)s' % {
             "code": error.code,
             "text": error.text,
             "path": error.filename,
             "row": error.line_number,
             "col": error.column_number,
         }
-        test_case.add_failure_info(message)
-        self.test_suites[error.filename].test_cases.append(test_case)
 
     # Add a dummy test if no error found
     def finished(self, filename):
