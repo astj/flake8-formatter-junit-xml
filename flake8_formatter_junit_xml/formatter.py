@@ -1,4 +1,3 @@
-from __future__ import print_function
 from flake8.formatting import base, default
 import optparse
 from junit_xml import TestSuite, TestCase
