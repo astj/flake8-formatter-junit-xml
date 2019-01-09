@@ -8,8 +8,6 @@ class JUnitXmlFormatter(default.Default):
 
     def after_init(self):
         self.test_suites = {}
-
-    def after_init(self):
         self.options.format = "default" # so that DefaultFormatter uses their built-in format
         super().after_init()
 
