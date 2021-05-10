@@ -1,3 +1,4 @@
+import os
 from flake8.formatting import base
 from junit_xml import TestSuite, TestCase
 
@@ -15,6 +16,8 @@ class JUnitXmlFormatter(base.BaseFormatter):
     # This formatter overwrites the target file, in contrast to flake8 base formatter which appends to the file.
     def start(self):
         if self.filename:
+            dirname = os.path.dirname(os.path.abspath(self.filename))
+            os.makedirs(dirname, exist_ok=True)
             self.output_fd = open(self.filename, 'w')
 
     # Do not write each error
