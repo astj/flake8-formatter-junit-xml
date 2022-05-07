@@ -20,7 +20,7 @@ class JUnitXmlFormatter(base.BaseFormatter):
     # Do not write each error
     def handle(self, error):
         name = '{0}, {1}'.format(error.code, error.text)
-        test_case = TestCase(name, file=error.filename, line=error.line_number)
+        test_case = TestCase(name=name, classname="flake8", file=error.filename, line=error.line_number)
         test_case.add_failure_info(message=self.format(error), output=self.show_source(error))
         self.test_suites[error.filename].test_cases.append(test_case)
 
@@ -36,7 +36,7 @@ class JUnitXmlFormatter(base.BaseFormatter):
     # Add a dummy test if no error found
     def finished(self, filename):
         if len(self.test_suites[filename].test_cases) == 0:
-            dummy_case = TestCase("Check passed", file=filename)
+            dummy_case = TestCase(name="Check passed", classname="flake8", file=filename)
             self.test_suites[filename].test_cases.append(dummy_case)
 
     # sort to generate a stable output
