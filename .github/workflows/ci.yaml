@@ -13,6 +13,7 @@ jobs:
     strategy:
       matrix:
         python-version: [ '2.x', '3.7', '3.x' ]
+      fail-fast: false
     name: Python ${{ matrix.python-version }}
     steps:
       - uses: actions/checkout@v3
