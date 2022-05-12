@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: [ '2.x', '3.7', '3.x' ]
+        python-version: [ '2.x', '3.6', '3.x' ]
       fail-fast: false
     name: Python ${{ matrix.python-version }}
     steps:
