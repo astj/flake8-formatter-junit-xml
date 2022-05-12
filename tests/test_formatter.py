@@ -2,6 +2,8 @@ import unittest
 import optparse
 import os
 import tempfile
+import xml.etree.ElementTree as ET
+
 from flake8_formatter_junit_xml import JUnitXmlFormatter
 from flake8 import style_guide
 from junit_xml import TestSuite, TestCase
@@ -63,6 +65,6 @@ class TestJunitXmlFormatter(unittest.TestCase):
         with open(tempfilename) as f:
             content = f.read()
             # print(content)
-            self.assertEqual(xml_content, content)
+            self.assertEqual(ET.canonicalize(xml_content), ET.canonicalize(content))
 
         os.remove(tempfilename)
