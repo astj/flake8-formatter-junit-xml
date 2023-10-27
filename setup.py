@@ -17,7 +17,7 @@ setuptools.setup(
     author="Asato Wakisaka",
     author_email="asato.wakisaka@gmail.com",
     url="https://github.com/astj/flake8-formatter-junit-xml",
-    packages=setuptools.find_packages(exclude=['examples']),
+    packages=setuptools.find_packages(exclude=['examples', 'tests']),
     install_requires=requires,
     entry_points={
         'flake8.report': [
